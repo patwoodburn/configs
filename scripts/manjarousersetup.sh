@@ -1,25 +1,26 @@
 #!/bin/bash
 
 LIST_OF_PACMAN_SOFTWARE="\
+  thefuck \
   base-devel \
   zig \
   unzip \
   yay \
   clang \
-  qemu \
+  qemu-full \
   zellij \
-  vict-manager \
+  virt-manager \
   gcc \
   binutils \
-  ttf-font-awesome
+  ttf-font-awesome \
+  neovim \
+  alacritty \
+  otf-opendyslexic-nerd \
 "
 LIST_OF_YAY_SOFTWARE="\
   discord \
   steam \
 "
 
-echo "password promtp:"
-read -s PASSWORD
-
-echo "$PASSWORD" | sudo -S pacman -Syu $LIST_OF_PACMAN_SOFTWARE
-yay -Syu LIST_OF_YAY_SOFTWARE
+sudo -S pacman -Syu $LIST_OF_PACMAN_SOFTWARE
+yay -Syu $LIST_OF_YAY_SOFTWARE
