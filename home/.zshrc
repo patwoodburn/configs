@@ -77,7 +77,7 @@ if [ -e "$localConfig" ]; then
   source $HOME/sources/localdefault.sh
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$PATH"
 
 autoload -Uz vcs_info
 # enable VCS systems you use
