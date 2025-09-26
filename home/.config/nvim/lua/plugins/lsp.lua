@@ -84,4 +84,39 @@ function plugin.config()
     },
   })
 end
-return plugin
+
+local pluginv2 = {"neovim/nvim-lspconfig"}
+pluginv2.dependencies = {
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
+  { "j-hui/fidget.nvim", opts = {} },
+}
+function pluginv2.config()
+
+  local servers = {
+    "clangd",
+    "rust_analyzer",
+    "jdtls",
+    "kotlin_language_server",
+    "lua_ls" ,
+    "zls",
+    "marksman",
+  }
+  require("mason").setup()
+  local ensure_installed = servers
+  vim.list_extend(ensure_installed, {
+    "stylua", -- Used to format lua code
+    "checkstyle",
+    "java-debug-adapter",
+  })
+  require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+  vim.lsp.config("*", {
+    init_options = {
+      bundle = vim.fn.glob("/home/woody/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar", 1)
+    }
+  })
+  vim.lsp.enable(servers)
+end
+return pluginv2

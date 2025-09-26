@@ -9,6 +9,24 @@ plugin.dependencies = {
 }
 plugin.config = function()
   local dap = require("dap")
+  dap.configurations.java = {
+    {
+      type = "java",
+      request = "attach",
+      name = "Debug (Attach) - Remote",
+      hostName = "127.0.0.1",
+      port = 5005,
+    },
+    -- Add more configurations for launching, etc., as needed
+  }
+
+  dap.adapters.java = {
+    type = "server",
+    host = "127.0.0.1",
+    port = 5005, -- Or the port your Java Debug Adapter listens on
+    -- Path to your Java Debug Adapter executable
+    command = { "java", "-jar", "/home/woody/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar" },
+  }
   dap.adapters.gdb = {
     type = "executable",
     command = "gdb",
