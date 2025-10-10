@@ -140,10 +140,17 @@ function pluginv2.config()
   })
   require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-  require('java').setup()
   vim.lsp.config("*", {
   })
+  vim.lsp.config("lua_ls", {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        },
+      },
+    },
+  })
   vim.lsp.enable(servers)
-  require('lspconfig').jdtls.setup({})
 end
 return pluginv2
