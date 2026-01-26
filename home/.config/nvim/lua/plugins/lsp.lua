@@ -133,7 +133,7 @@ function pluginv2.config()
   require("mason").setup()
   local ensure_installed = servers
   vim.list_extend(ensure_installed, {
-    "stylua", -- Used to format lua code
+    --"stylua", -- Used to format lua code
     "jdtls",
     "checkstyle",
     "java-debug-adapter",
