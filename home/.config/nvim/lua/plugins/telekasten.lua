@@ -3,7 +3,7 @@ plugin.dependencies = { "nvim-telescope/telescope.nvim" }
 function plugin.config()
   require('telekasten').setup({
     auto_set_filetype = false,
-    home = vim.fn.expand("~/Documents/Notes")
+    home = vim.fn.expand(vim.env.NOTES_PATH)
   })
   vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>", { desc = "[Z]edlecasten [F]ind" })
   vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>", { desc = "[Z]edlecasten [G]oto Note" })
