@@ -11,6 +11,7 @@ plugin.dependencies = {
   },
   "nvim-telescope/telescope-ui-select.nvim",
   "nvim-tree/nvim-web-devicons",
+  "nvim-telescope/telescope-symbols.nvim",
 }
 function plugin.config ()
   require("telescope").setup({
@@ -35,7 +36,8 @@ function plugin.config ()
   vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
   vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "[S]earch Marks" })
   vim.keymap.set("n", "<leader>sr", builtin.registers, { desc = "[S]earch Registers" })
-  vim.keymap.set("n", "<leader>sz", builtin.spell_suggest, { desc="[S]pelling Z"})
+  vim.keymap.set("n", "<leader>sz", builtin.spell_suggest, { desc="[S]pelling Z" })
+  vim.keymap.set("n", "<leader>se", builtin.symbols, { desc="[S]earch [E]moji" })
   vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 end
 return plugin
