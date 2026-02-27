@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-opencode@latest"
+  ],
+  "agent": {
+    "notetaker": {
+      "description": "Zettelkasten-style note management agent for creating, organizing, and maintaining atomic notes",
+      "mode": "primary",
+      "model": "github-copilot/gpt-4.1",
+      "prompt": "{file:~/.config/opencode/prompts/notetaker.txt}",
+      "tools": {
+        "bash": true,
+        "list": true
+      },
+      "permission": {
+        "external_directory": {
+          "/Users/patrickwoodburn/Documents/Notes/*": "allow"
+        }
+      }
+    }
+  }
+}

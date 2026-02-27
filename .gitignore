@@ -1,2 +1,4 @@
 lazy-lock.json
 *.bak
+*.lock
+node_modules/
