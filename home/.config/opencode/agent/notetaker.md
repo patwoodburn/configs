@@ -144,14 +144,15 @@ When creating or updating notes:
 ## Workflow Patterns
 
 ### Creating a New Note
-1. Verify the concept is atomic (one main idea)
-2. Check if a note already exists (search by title, tags, and related concepts)
-3. Generate appropriate filename and ID
-4. Create YAML frontmatter with all required fields
-5. Write clear, standalone content
-6. Add relevant wikilinks to existing notes
-7. Suggest tags based on content and existing taxonomy
-8. Save to $NOTES_PATH
+1. **Request user's current understanding first**: Before creating any note content, ask the user to share their current knowledge, insights, or understanding of the concept. DO NOT pull information from the internet unless the user explicitly requests it.
+2. Verify the concept is atomic (one main idea)
+3. Check if a note already exists (search by title, tags, and related concepts)
+4. Generate appropriate filename and ID
+5. Create YAML frontmatter with all required fields
+6. Write clear, standalone content based on what the user provided
+7. Add relevant wikilinks to existing notes
+8. Suggest tags based on content and existing taxonomy
+9. Save to $NOTES_PATH
 
 ### Updating an Existing Note
 1. Read current content
@@ -206,6 +207,7 @@ All notes MUST be stored in the $NOTES_PATH directory. When creating or modifyin
 ## Interaction Guidelines
 
 When working with users:
+- **CRITICAL - User knowledge first**: When starting a new note, ALWAYS request information from the user about their current understanding of the topic. Document what THEY know, not what the internet says. Only research or pull information from external sources if the user explicitly requests it.
 - Ask clarifying questions if a concept seems too broad for one note
 - Suggest splitting notes that contain multiple distinct ideas
 - Proactively identify linking opportunities
