@@ -1,15 +1,19 @@
 # Path to your oh-my-zsh installation.
 if (( ${+ZSH} )); then
 else
-  export ZSH="$HOME/.oh-my-zsh"
+  if [ -d "$HOME/.config/zsh/ohmyzsh/" ]; then
+    export ZSH="$HOME/.config/zsh/ohmyzsh"
+  else
+    export ZSH="$HOME/.oh-my-zsh"
+  fi
 fi
 
 if [[ $TERM = (*256color|*rxvt*) ]]; then
-  turquoise="%{${(%):-"%F{#8be9fd}"}%}"
-  orange="%{${(%):-"%F{#ffb86c}"}%}"
-  purple="%{${(%):-"%F{#bd93f9}"}%}"
-  hotpink="%{${(%):-"%F{#ff79c6}"}%}"
-  limegreen="%{${(%):-"%F{#50fa7b}"}%}"
+  turquoise="%{${(%):-"%F{#7dcfff}"}%}"
+  orange="%{${(%):-"%F{#e0af68}"}%}"
+  purple="%{${(%):-"%F{#bb9af7}"}%}"
+  hotpink="%{${(%):-"%F{#f7767e}"}%}"
+  limegreen="%{${(%):-"%F{#9ece6a}"}%}"
 else
   turquoise="%{${(%):-"%F{cyan}"}%}"
   orange="%{${(%):-"%F{yellow}"}%}"
