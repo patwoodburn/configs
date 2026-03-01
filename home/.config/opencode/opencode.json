@@ -15,7 +15,7 @@
       },
       "permission": {
         "external_directory": {
-          "/Users/patrickwoodburn/Documents/Notes/*": "allow"
+          "$HOME/Documents/Notes/*": "allow"
         }
       }
     }
