@@ -48,7 +48,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 
-alias please='sudo $(fc -ln 0)'
+alias please='sudo $(fc -ln -1)'
 
 bindkey -v
 
