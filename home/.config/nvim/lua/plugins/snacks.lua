@@ -7,6 +7,7 @@ plugin.opts = {
   terminal = {enabled = true},
   picker = {enabled = true},
   input = {enabled = true},
+  indent = {enabled = true},
   statuscolumn = {enabled = true},
   notifier = {enabled = true, timeout = 3000},
   words = {enabled = true},
