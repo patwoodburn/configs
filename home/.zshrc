@@ -81,7 +81,7 @@ if [ -e "$localConfig" ]; then
   source $HOME/sources/localdefault.sh
 fi
 
-export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:/opt/homebrew/bin:$PATH"
 
 autoload -Uz vcs_info
 # enable VCS systems you use
@@ -150,3 +150,5 @@ eval $(thefuck --alias)
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}' --bind 'enter:become(nvim {})'"

@@ -153,4 +153,6 @@ function pluginv2.config()
   })
   vim.lsp.enable(servers)
 end
+pluginv2.event = { "BufReadPre", "BufNewFile" }
+
 return pluginv2

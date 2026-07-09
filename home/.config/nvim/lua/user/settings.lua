@@ -22,6 +22,7 @@ vim.o.showmatch = true
 -- vim.o.matchParen = true
 
 vim.o.spell = true
+vim.opt.spelloptions:append("camel")
 
 -- don't double info
 vim.o.showmode = false
