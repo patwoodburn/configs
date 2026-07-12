@@ -1,8 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": [
-    "oh-my-opencode@latest"
-  ],
+  "provider": {
+    "ollama": {
+      "npm": "@api-sdk/openai-compatible",
+      "name": "ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder": {
+          "name": "qwen3-coder",
+        }
+      }
+    }
+  },
   "agent": {
     "notetaker": {
       "description": "Zettelkasten-style note management agent for creating, organizing, and maintaining atomic notes",

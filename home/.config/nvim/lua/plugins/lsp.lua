@@ -88,7 +88,9 @@
 
 local pluginv2 = {"neovim/nvim-lspconfig"}
 pluginv2.dependencies = {
-  "williamboman/mason.nvim",
+  {"williamboman/mason.nvim", opts = {
+    PATH = "skip"
+  }},
   "williamboman/mason-lspconfig.nvim",
   "WhoIsSethDaniel/mason-tool-installer.nvim",
   { "j-hui/fidget.nvim", opts = {} },
@@ -106,7 +108,7 @@ function pluginv2.config()
        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc="[G]oto [D]efinition"})
        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc ="hover [K]nowlage"})
        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc="[G]oto [I]mplementation"})
-       vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = ev.buf})
+       --vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = ev.buf})
        vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = ev.buf})
        vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { buffer = ev.buf})
        vim.keymap.set("n", "<leader>wl", function()
@@ -119,16 +121,23 @@ function pluginv2.config()
        vim.keymap.set("n", "<leader>f", function()
          vim.lsp.buf.format({ async = true })
        end, { buffer = ev.buf, desc="[F]ormat code"})
+
+       local client = vim.lsp.get_client_by_id(ev.data.client_id)
+       if client and client.supports_method("textDocument/documentColor") then
+         vim.lsp.document_color(true, {bufnr = ev.buf})
+       end
      end,
    })
 
   local servers = {
     "clangd",
     "rust_analyzer",
-    "kotlin_language_server",
+    "kotlin-lsp",
     "lua_ls" ,
     "zls",
     "marksman",
+    "gopls",
+    "c3_lsp",
   }
   require("mason").setup()
   local ensure_installed = servers
@@ -149,6 +158,18 @@ function pluginv2.config()
           globals = { 'vim' }
         },
       },
+    },
+  })
+  vim.lsp.config("kotlin-lsp", {
+    filetypes = { "kotlin" },
+    cmd = { 'kotlin-lsp', '--stdio' },
+    root_markers = {
+      'settings.gradle', -- Gradle (multi-project)
+      'settings.gradle.kts', -- Gradle (multi-project)
+      'pom.xml', -- Maven
+      'build.gradle', -- Gradle
+      'build.gradle.kts', -- Gradle
+      'workspace.json', -- Used to integrate your own build system
     },
   })
   vim.lsp.enable(servers)

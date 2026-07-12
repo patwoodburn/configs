@@ -13,7 +13,8 @@ blur = true
 option_as_alt = "Both"
 
 [font]
- normal=  {family = "OpenDyslexicM Nerd Font Mono", style = "Regular"}
+ #normal=  {family = "OpenDyslexicM Nerd Font Mono", style = "Regular"}
+ normal=  {family = "FiraCode Nerd Font Mono", style = "Regular"}
 offset.y=2
 size = 12
 

@@ -12,3 +12,5 @@
 	required = true
 [rerere]
 	enabled = true
+[http]
+	postBuffer = 524288000

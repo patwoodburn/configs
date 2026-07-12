@@ -5,28 +5,10 @@ plugin.dependencies = {
       require("nvim-dap-virtual-text").setup()
     end
   },
-  {"igorlfs/nvim-dap-view"}
+  {"igorlfs/nvim-dap-view"},
 }
 plugin.config = function()
   local dap = require("dap")
- -- dap.configurations.java = {
- --   {
- --     type = "java",
- --     request = "attach",
- --     name = "Debug (Attach) - Remote",
- --     hostName = "127.0.0.1",
- --     port = 5005,
- --   },
- --   -- Add more configurations for launching, etc., as needed
- -- }
-
- -- dap.adapters.java = {
- --   type = "server",
- --   host = "127.0.0.1",
- --   port = 5005, -- Or the port your Java Debug Adapter listens on
- --   -- Path to your Java Debug Adapter executable
- --   command = { "java", "-jar", "/home/woody/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin-0.53.2.jar" },
- -- }
   dap.adapters.gdb = {
     type = "executable",
     command = "gdb",
@@ -105,6 +87,10 @@ plugin.config = function()
     end
     keymap_restore = {}
   end
+
+  vim.keymap.set("n", "<leader>dc", "<cmd>DapContinue<cr>", {desc = "[D]ap [C]ontiue"})
+  vim.keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<cr>", {desc = "[D]ap toggle [B]rakepoint"})
+  vim.keymap.set("n", "<leader>dv", "<cmd>DapViewToggle<cr>", {desc = "[D]ap toggle [V]iew"})
 
 end
 return plugin

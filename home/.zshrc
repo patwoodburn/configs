@@ -82,6 +82,7 @@ if [ -e "$localConfig" ]; then
 fi
 
 export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:/opt/homebrew/bin:$PATH"
+#export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$PATH"
 
 autoload -Uz vcs_info
 # enable VCS systems you use
@@ -146,9 +147,12 @@ setopt prompt_subst
 PROMPT="${purple}%n%{$reset_color%}@${limegreen}%M%{$reset_color%} in ${limegreen}%~%{$reset_color%}\$(virtualenv_prompt_info)\$(ruby_prompt_info)\$vcs_info_msg_0_${white}  $ %{$reset_color%} "
 
 eval $(thefuck --alias)
+PATH=$HOME/.local/share/nvim/mason/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export FZF_DEFAULT_OPTS="--style full --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}' --bind 'enter:become(nvim {})'"
+
+eval "$(tv init zsh)"
